@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Borough Line · NYC Stay Type Predictor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="topbar">
+  <div class="topbar__brand">
+    <span class="topbar__mark">◆</span>
+    <span class="topbar__name">BOROUGH&nbsp;LINE</span>
+  </div>
+  <div class="topbar__tag">stay&#8209;type classifier / NYC Airbnb</div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <p class="hero__eyebrow">Route&nbsp;01 &nbsp;·&nbsp; Random Forest, 3 destinations</p>
+    <h1 class="hero__title">Where does<br/>this listing<br/><span class="hero__title-accent">get off?</span></h1>
+    <p class="hero__sub">Feed in the specs of an NYC Airbnb listing. The model reads location, price and host signals, then calls the stop: <b>Entire home/apt</b>, <b>Private room</b>, or <b>Shared room</b>.</p>
+  </section>
+
+  <section class="board">
+
+    <form id="predict-form" class="panel panel--form">
+      <div class="panel__head">
+        <span class="panel__num">01</span>
+        <h2>Listing details</h2>
+      </div>
+
+      <div class="field-grid">
+
+        <div class="field">
+          <label for="neighbourhood_group">Borough</label>
+          <select id="neighbourhood_group" required>
+            <option value="" disabled selected>Select borough</option>
+            <option>Manhattan</option>
+            <option>Brooklyn</option>
+            <option>Queens</option>
+            <option>Bronx</option>
+            <option>Staten Island</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="neighbourhood">Neighbourhood</label>
+          <input list="neighbourhood-list" id="neighbourhood" placeholder="Start typing…" required autocomplete="off" />
+          <datalist id="neighbourhood-list"></datalist>
+        </div>
+
+        <div class="field">
+          <label for="latitude">Latitude</label>
+          <input type="number" id="latitude" step="0.000001" min="-90" max="90" placeholder="40.7128" required />
+        </div>
+
+        <div class="field">
+          <label for="longitude">Longitude</label>
+          <input type="number" id="longitude" step="0.000001" min="-180" max="180" placeholder="-74.0060" required />
+        </div>
+
+        <div class="field">
+          <label for="price">Price / night (USD)</label>
+          <input type="number" id="price" step="1" min="1" placeholder="150" required />
+        </div>
+
+        <div class="field">
+          <label for="minimum_nights">Minimum nights</label>
+          <input type="number" id="minimum_nights" step="1" min="1" max="365" placeholder="3" required />
+        </div>
+
+        <div class="field">
+          <label for="number_of_reviews">Total reviews</label>
+          <input type="number" id="number_of_reviews" step="1" min="0" placeholder="24" required />
+        </div>
+
+        <div class="field">
+          <label for="reviews_per_month">Reviews / month</label>
+          <input type="number" id="reviews_per_month" step="0.01" min="0" placeholder="1.2" required />
+        </div>
+
+        <div class="field">
+          <label for="calculated_host_listings_count">Host's total listings</label>
+          <input type="number" id="calculated_host_listings_count" step="1" min="0" placeholder="1" required />
+        </div>
+
+        <div class="field">
+          <label for="availability_365">Availability (days/yr)</label>
+          <input type="number" id="availability_365" step="1" min="0" max="365" placeholder="180" required />
+        </div>
+
+      </div>
+
+      <details class="advanced">
+        <summary>API endpoint</summary>
+        <div class="field field--full">
+          <label for="api-base">FastAPI base URL</label>
+          <input type="text" id="api-base" value="http://127.0.0.1:8000" autocomplete="off" />
+        </div>
+      </details>
+
+      <button type="submit" class="btn-predict" id="submit-btn">
+        <span class="btn-predict__label">Call the stop</span>
+        <span class="btn-predict__arrow">→</span>
+      </button>
+
+      <p class="form-error" id="form-error"></p>
+    </form>
+
+    <div class="panel panel--result">
+      <div class="panel__head">
+        <span class="panel__num">02</span>
+        <h2>Prediction</h2>
+      </div>
+
+      <div class="result" id="result-empty">
+        <div class="sign">
+          <div class="sign__dot"></div>
+          <p class="sign__text">Awaiting listing data</p>
+        </div>
+        <p class="result-hint">Fill the form and press <em>Call the stop</em> — the model will name the room type and show how confident it is across all three.</p>
+      </div>
+
+      <div class="result result--loading" id="result-loading" hidden>
+        <div class="track">
+          <div class="train"></div>
+        </div>
+        <p class="result-hint">Model in transit…</p>
+      </div>
+
+      <div class="result result--done" id="result-done" hidden>
+        <p class="result-eyebrow">Predicted room type</p>
+        <h3 class="result-headline" id="result-headline">—</h3>
+        <div class="bars" id="result-bars"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="info">
+    <div class="info__head">
+      <span class="panel__num">03</span>
+      <h2>How this line runs</h2>
+    </div>
+    <div class="info__grid">
+      <div class="info-card">
+        <span class="info-card__k">Model</span>
+        <p>A scikit&#8209;learn <b>Pipeline</b>: median/mode imputation → standard scaling for numeric fields and one&#8209;hot encoding for borough &amp; neighbourhood → a <b>Random Forest</b> classifier (200 trees, class&#8209;balanced) on top.</p>
+      </div>
+      <div class="info-card">
+        <span class="info-card__k">Training data</span>
+        <p>NYC Airbnb open listings — 10 features per row: coordinates, price, minimum nights, review volume &amp; pace, host listing count, yearly availability, and location.</p>
+      </div>
+      <div class="info-card">
+        <span class="info-card__k">Output</span>
+        <p>One of three room types — <b>Entire home/apt</b>, <b>Private room</b>, <b>Shared room</b> — plus the full probability spread the forest voted across all three.</p>
+      </div>
+      <div class="info-card">
+        <span class="info-card__k">Serving</span>
+        <p>A local <b>FastAPI</b> app loads the pickled pipeline once at startup and exposes it at <code>POST /predict</code>. This page is a plain static client — CORS is open, no build step needed.</p>
+      </div>
+    </div>
+    <p class="info-foot">Heads up — this reads listing <em>metadata</em>, not photos or descriptions, so odd combinations (e.g. a $2,000/night shared room) will still get a confident&#8209;looking guess. Treat it as a signal, not a verdict.</p>
+  </section>
+
+  <footer class="footer">
+    <span>Borough Line · a small classifier with a big commute</span>
+  </footer>
+
+</main>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
