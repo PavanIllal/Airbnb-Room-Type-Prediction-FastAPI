@@ -10,7 +10,7 @@ Machine Learning + FastAPI + HTML/CSS/JavaScript + Render
 <img src="https://img.shields.io/badge/Python-3.13-blue" alt="Python"> <img src="https://img.shields.io/badge/FastAPI-0.115.6-009688" alt="FastAPI"> <img src="https://img.shields.io/badge/Scikit--learn-1.7.2-orange" alt="Scikit-learn"> <img src="https://img.shields.io/badge/Pandas-2.2.3-150458" alt="Pandas"> <img src="https://img.shields.io/badge/Deployment-Render-46E3B7" alt="Render">
 
 </p>
-:::
+
 
 
 
