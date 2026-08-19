@@ -1,33 +1,18 @@
 ::: {align="center"}
 # 🏠 Airbnb Room Type Prediction
 
-### Machine Learning + FastAPI + HTML/CSS/JavaScript + Render
+Machine Learning + FastAPI + HTML/CSS/JavaScript + Render
+<p>
+<a href="https://airbnb-room-type-prediction-fastapi.onrender.com">{=html} <strong>{=html}🚀 Live Demo</strong>{=html} </a>{=html}   •   <a href="https://github.com/PavanIllal/Airbnb-Room-Type-Prediction-FastAPI">{=html} <strong>{=html}💻 GitHub Repository</strong>{=html} </a>{=html}   •   <a href="https://airbnb-room-type-prediction-fastapi.onrender.com/docs">{=html} <strong>{=html}⚡ API Documentation</strong>{=html} </a>{=html}
 
-```{=html}
-<p>
-```
-`<a href="https://airbnb-room-type-prediction-fastapi.onrender.com">`{=html}
-`<strong>`{=html}🚀 Live Demo`</strong>`{=html} `</a>`{=html}   •  
-`<a href="https://github.com/PavanIllal/Airbnb-Room-Type-Prediction-FastAPI">`{=html}
-`<strong>`{=html}💻 GitHub Repository`</strong>`{=html} `</a>`{=html}  
-•  
-`<a href="https://airbnb-room-type-prediction-fastapi.onrender.com/docs">`{=html}
-`<strong>`{=html}⚡ API Documentation`</strong>`{=html} `</a>`{=html}
-```{=html}
 </p>
-```
-```{=html}
 <p>
-```
-`<img src="https://img.shields.io/badge/Python-3.13-blue" alt="Python">`{=html}
-`<img src="https://img.shields.io/badge/FastAPI-0.115.6-009688" alt="FastAPI">`{=html}
-`<img src="https://img.shields.io/badge/Scikit--learn-1.7.2-orange" alt="Scikit-learn">`{=html}
-`<img src="https://img.shields.io/badge/Pandas-2.2.3-150458" alt="Pandas">`{=html}
-`<img src="https://img.shields.io/badge/Deployment-Render-46E3B7" alt="Render">`{=html}
-```{=html}
+<img src="https://img.shields.io/badge/Python-3.13-blue" alt="Python">{=html} <img src="https://img.shields.io/badge/FastAPI-0.115.6-009688" alt="FastAPI">{=html} <img src="https://img.shields.io/badge/Scikit--learn-1.7.2-orange" alt="Scikit-learn">{=html} <img src="https://img.shields.io/badge/Pandas-2.2.3-150458" alt="Pandas">{=html} <img src="https://img.shields.io/badge/Deployment-Render-46E3B7" alt="Render">{=html}
+
 </p>
-```
 :::
+
+
 
 ------------------------------------------------------------------------
 
