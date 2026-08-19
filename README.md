@@ -446,8 +446,8 @@ https://airbnb-room-type-prediction-fastapi.onrender.com
 
 ------------------------------------------------------------------------
 
-::: {align="center"}
+
 ### ⭐ If you found this project interesting, consider giving the repository a star!
 
 **Built with Python, Scikit-learn, FastAPI and JavaScript.**
-:::
+
