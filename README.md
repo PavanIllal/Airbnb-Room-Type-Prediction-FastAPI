@@ -207,19 +207,19 @@ Example:
 
 ------------------------------------------------------------------------
 
-## 📸 Application Screenshots
+## Application Screenshots
 
 ### Live Application
 
-::: {align="center"}
-`<img src="screenshots/airbnb-live-home.png" alt="Airbnb Room Type Prediction live application" width="900">`{=html}
-:::
+<p align="center">
+  <img src="screenshots/airbnb-live-home.png" alt="Airbnb Room Type Prediction live application" width="900">
+</p>
 
 ### Prediction Result
 
-::: {align="center"}
-`<img src="screenshots/airbnb-prediction-result.png" alt="Airbnb Room Type Prediction result" width="900">`{=html}
-:::
+<p align="center">
+  <img src="screenshots/airbnb-prediction-result.png" alt="Airbnb Room Type Prediction result" width="900">
+</p>
 
 ------------------------------------------------------------------------
 
