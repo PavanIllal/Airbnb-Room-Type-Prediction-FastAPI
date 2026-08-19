@@ -74,11 +74,21 @@ The model predicts one of three room types:
 
 ## 📊 Dataset
 
-The project uses an **NYC Airbnb listings dataset** containing
-information about Airbnb properties in New York City.
+The project uses the **New York City Airbnb Open Data (2019)** dataset
+containing information about Airbnb listings in New York City.
 
 The model uses selected listing, location, host, review, and
 availability features to predict the room type.
+
+### Dataset Source
+
+The original dataset is available on Kaggle:
+
+🔗 **[New York City Airbnb Open Data – Kaggle](https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data)**
+
+The dataset is also included in this repository as:
+
+`AB_NYC_2019.csv`
 
 ------------------------------------------------------------------------
 
