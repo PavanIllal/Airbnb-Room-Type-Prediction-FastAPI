@@ -1,4 +1,4 @@
-::: {align="center"}
+
 # 🏠 Airbnb Room Type Prediction
 
 Machine Learning + FastAPI + HTML/CSS/JavaScript + Render
